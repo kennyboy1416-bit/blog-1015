@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>發表新文章</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.8;
+            background: #f7f7f7;
+        }
+
+        .form-container {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: #1769aa;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .error {
+            color: #c62828;
+        }
+
+        a {
+            color: #1769aa;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>發表新文章</h1>
+
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('create_post') }}">
+            <label for="title">文章標題</label>
+            <input
+                type="text"
+                id="title"
+                name="title"
+                value="{{ title or '' }}"
+                required
+            >
+
+            <label for="author">作者</label>
+            <input
+                type="text"
+                id="author"
+                name="author"
+                value="{{ author or '' }}"
+                required
+            >
+
+            <label for="content">文章內容</label>
+            <textarea
+                id="content"
+                name="content"
+                required
+            >{{ content or '' }}</textarea>
+
+            <button type="submit">發布文章</button>
+        </form>
+
+        <p>
+            <a href="{{ url_for('index') }}">← 回到首頁</a>
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ post.title }} - 我的部落格</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.8;
+            background: #f7f7f7;
+        }
+
+        article {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .author {
+            color: #666;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+        }
+
+        .content {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <article>
+        <h1>{{ post.title }}</h1>
+
+        <p class="author">
+            作者：{{ post.author }}
+        </p>
+
+        <div class="content">{{ post.content }}</div>
+
+        <p>
+            <a href="{{ url_for('index') }}">
+                ← 回到文章列表
+            </a>
+        </p>
+    </article>
+</body>
+</html>
